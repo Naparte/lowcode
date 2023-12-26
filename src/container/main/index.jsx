@@ -4,7 +4,12 @@ import { Config } from "../config";
 
 export const Main = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        padding: "10px",
+      }}
+    >
       <Material></Material>
       <Editor></Editor>
       <Config></Config>

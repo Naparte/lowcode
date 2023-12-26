@@ -1,3 +1,11 @@
 export const Config = () => {
-  return <div>配置区</div>;
+  return (
+    <div
+      style={{
+        width: "200px",
+      }}
+    >
+      配置区
+    </div>
+  );
 };
