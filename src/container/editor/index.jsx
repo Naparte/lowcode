@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { componentsList } from "../../components";
+import { PageContext } from "../../store";
 
 export const Editor = () => {
-  const [list, setList] = useState([]);
+  const { list, setList, setCurrentConfigId } = useContext(PageContext);
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -13,12 +14,14 @@ export const Editor = () => {
     console.log(droppedElementName);
 
     setList(
-      list.concat({
-        id: new Date().getTime(),
-        name: droppedElementName,
-        props: {},
-        children: [],
-      })
+      list.concat([
+        {
+          id: new Date().getTime(),
+          name: droppedElementName,
+          props: {},
+          children: [],
+        },
+      ])
     );
   };
 
@@ -28,10 +31,18 @@ export const Editor = () => {
     });
   };
 
+  const handleConfig = (id) => {
+    setCurrentConfigId(id);
+  };
+
   const renderComponent = () => {
     return list.map((item) => {
       const Component = getComponent(item.name).component;
-      return <Component {...item.props}></Component>;
+      return (
+        <span onClick={() => handleConfig(item.id)}>
+          <Component {...item.props}></Component>
+        </span>
+      );
     });
   };
 
