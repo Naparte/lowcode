@@ -29,6 +29,10 @@ export const ButtonPropsType = [
   },
 ];
 
-export const Button = ({ text, size }) => {
-  return <button className={`${size}`}>{text || "Default Btn"}</button>;
+export const Button = ({ text, size, style }) => {
+  return (
+    <button style={style} className={`button-size-${size}`}>
+      {text || "Default Btn"}
+    </button>
+  );
 };

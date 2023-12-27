@@ -19,6 +19,6 @@ export const TextPorpsType = [
   },
 ];
 
-export const Text = ({ string, size, color }) => {
-  return <sapn> {string || "Default Text"}</sapn>;
+export const Text = ({ string, size, color, style }) => {
+  return <sapn style={style}> {string || "Default Text"}</sapn>;
 };
